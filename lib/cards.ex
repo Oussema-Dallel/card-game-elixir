@@ -4,7 +4,6 @@ defmodule Cards do
   @moduledoc """
   Documentation for `Cards`.
   """
-
   @doc """
   Hello world.
 
@@ -18,9 +17,14 @@ defmodule Cards do
     :world
   end
 
+  @spec! create_deck :: list
   def create_deck do
-    _values = ["Ace", "Seven", "King"]
-    _suits = ["Spades", "Diamonds", "Hearts"]
+    values = ["Ace", "Seven", "King"]
+    suits = ["Spades", "Diamonds", "Hearts"]
+
+    for suit <- suits, value <- values do
+      "#{value} of #{suit}"
+    end
   end
 
   @spec! shuffleDeck(Enum.t()) :: Enum.t()
@@ -31,5 +35,10 @@ defmodule Cards do
   @spec! contains?(Enum.t(), String.t()) :: boolean
   def contains?(deck, card) do
     Enum.member?(deck, card)
+  end
+
+  @spec! deal(Enum.t(), number()) :: {Enum.t(), Enum.t()}
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
   end
 end

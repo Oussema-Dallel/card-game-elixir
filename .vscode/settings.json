@@ -7,5 +7,8 @@
   "editor.formatOnType": true,
   "editor.wordBasedSuggestions": false,
   "editor.trimAutoWhitespace": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "elixirLS.enableTestLenses": true,
+  "elixirLinter.useStrict": true
 }
