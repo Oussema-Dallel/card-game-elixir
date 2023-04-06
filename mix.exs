@@ -23,7 +23,8 @@ defmodule Cards.MixProject do
     [
       {:type_check, "~> 0.13.3"},
       # To allow spectesting and property-testing data generators (optional):
-      {:stream_data, "~> 0.5.0", only: :test}
+      {:stream_data, "~> 0.5.0", only: :test},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]

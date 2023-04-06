@@ -41,4 +41,25 @@ defmodule Cards do
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
+
+  @spec! save_deck(Enum.t(), String.t()) :: any()
+  def save_deck(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
+
+  @spec! load_deck(String.t()) :: Enum.t() | String.t()
+  def load_deck(filename) do
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term(binary)
+      {:error, _reason} -> "File does not exist"
+    end
+  end
+
+  @spec! create_hand(integer) :: {Enum.t(), Enum.t()}
+  def create_hand(hand_size) do
+    Cards.create_deck()
+    |> Cards.shuffleDeck()
+    |> Cards.deal(hand_size)
+  end
 end
