@@ -2,21 +2,12 @@ defmodule Cards do
   use TypeCheck
 
   @moduledoc """
-  Documentation for `Cards`.
+  Provides methods for creating and handlonga deck of `Cards`.
   """
+
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Cards.hello()
-      :world
-
+  Creates a deck of cards, the cards are a combination of `values` and `suits`
   """
-  def hello do
-    :world
-  end
-
   @spec! create_deck :: list
   def create_deck do
     values = ["Ace", "Seven", "King"]
@@ -37,6 +28,17 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+  @doc """
+    Splits the deck of cards into two according to the `hand_size`, the latter determines how many
+    cards goes into the hand.
+  
+    ## Examples
+  
+    iex> deck = Cards.create_deck()
+    iex> {hand, rest} = Cards.deal(deck, 1)
+    iex> hand
+    ["Ace of Spades"]
+  """
   @spec! deal(Enum.t(), number()) :: {Enum.t(), Enum.t()}
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
